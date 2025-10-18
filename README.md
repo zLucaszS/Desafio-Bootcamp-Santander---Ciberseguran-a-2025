@@ -6,25 +6,31 @@ referente aos passos realizados até atingir o objetivo do desafio.
 
 Com o comando < arp -na >, consigo ver todos os hosts da minha rede.
 
+
 <img width="588" height="122" alt="image" src="https://github.com/user-attachments/assets/92ffa4f8-53e3-4d34-8384-2a46b4c87543" />
 
 Endereço IP do Kali: 192.162.56.102/24
+
 <img width="681" height="82" alt="image" src="https://github.com/user-attachments/assets/0780bfb7-4625-4ec0-ae38-dce532a7eb23" />
 
 Endereço IP do Metaspoitable2: 192.162.56.101/24
+
 <img width="684" height="74" alt="image" src="https://github.com/user-attachments/assets/6622f76c-1ef2-4f99-a65d-d86b2877be61" />
 
  
 Através do Kali Linux com o utilitário nmap consegui identificar o sistema operacional da VM mataspoitable e as portas abertas desse dessa máquina.
 SO:
+
 <img width="385" height="98" alt="image" src="https://github.com/user-attachments/assets/737bcf95-fab1-4fd9-835a-0689284ae01d" />
 
 Portas Abertas:
+
 <img width="676" height="479" alt="image" src="https://github.com/user-attachments/assets/17f0ff02-baa6-4da4-9331-04c08c26afa4" />
 
 
 EXPLORANDO O SERVIÇO FTP
 Como podemos ver a porta 21 do FTP está aberta e com essa informação podemos realizar ataque de força bruta para conseguir o login e senha do acesso ao servidor FTP.
+
 <img width="303" height="123" alt="image" src="https://github.com/user-attachments/assets/1e668129-bd8a-46d3-b664-ca56521c14c5" />
 
 
@@ -33,11 +39,13 @@ em paralelo trabalhando com múltiplas threads de processamento ao mesmo tempo, 
 
 
 Listas criadas:
+
 <img width="280" height="272" alt="image" src="https://github.com/user-attachments/assets/f7d7c527-6497-4345-88cb-600f46b27eed" />
 
 
 Comando medusa utilizando para testar as combinações de usuários e senhas:
 Medusa -h 192.168.56.101 -U users.txt -P pass.txt -M ftp -T 6
+
 <img width="897" height="247" alt="image" src="https://github.com/user-attachments/assets/0e404d57-51db-4479-a5ae-c054b2c15d4c" />
 
 
