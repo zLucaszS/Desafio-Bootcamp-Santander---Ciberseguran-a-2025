@@ -31,6 +31,7 @@ Portas Abertas:
 EXPLORANDO O SERVIÇO FTP
 Como podemos ver a porta 21 do FTP está aberta e com essa informação podemos realizar ataque de força bruta para conseguir o login e senha do acesso ao servidor FTP.
 
+
 <img width="303" height="123" alt="image" src="https://github.com/user-attachments/assets/1e668129-bd8a-46d3-b664-ca56521c14c5" />
 
 
@@ -40,11 +41,13 @@ em paralelo trabalhando com múltiplas threads de processamento ao mesmo tempo, 
 
 Listas criadas:
 
+
 <img width="280" height="272" alt="image" src="https://github.com/user-attachments/assets/f7d7c527-6497-4345-88cb-600f46b27eed" />
 
 
 Comando medusa utilizando para testar as combinações de usuários e senhas:
 Medusa -h 192.168.56.101 -U users.txt -P pass.txt -M ftp -T 6
+
 
 <img width="897" height="247" alt="image" src="https://github.com/user-attachments/assets/0e404d57-51db-4479-a5ae-c054b2c15d4c" />
 
@@ -54,6 +57,7 @@ login: msfadmin
 Senha: msfadmin
 
 Após isso basta acessar o servidor FTP:
+
 <img width="561" height="437" alt="image" src="https://github.com/user-attachments/assets/3ef1bbf6-05b5-415a-9313-5cf40fb554cb" />
 
 
@@ -67,7 +71,7 @@ Como se proteger na prática?
 7.	Monitorar e alertar as tentativas de conexão.
 
 
-=========================================================================================================================================================================================================
+====================================================================================================================================================================
 
 
 
@@ -75,26 +79,34 @@ EXPLORANDO FORMULÁRIOS WEB
 Como vimos com o nmap a porta 80 está aberta para nós realizarmos identificação e exploração do serviço que está rodando naquela porta.
 Para isso usei o comando:
 nmap -A -p 80 192.168.56.101
+
 <img width="548" height="169" alt="image" src="https://github.com/user-attachments/assets/e6474d50-f790-4e65-8b85-0d69c68f7662" />
 
+
 Ao verificar que é um Web Server Apache, podemos acessar através de um navegador:
+
 <img width="536" height="483" alt="image" src="https://github.com/user-attachments/assets/3de7a2ff-c4af-4d89-843d-a491b004e9db" />
 
+
 Temos 4 links para acessar os index desse servidor web e para o desafio acessei o DVWA:
+
 <img width="566" height="276" alt="image" src="https://github.com/user-attachments/assets/ff401055-2a80-41ae-96c2-e949f6654b84" />
 
 Agora temos um formulário de login e senha que podemos explorar com a ferramenta medusa com listas de usuários e senhas novamente, através do comando:
+
 medusa -h 192.168.56.101 -U users.txt -P pass.txt -M http \
 -m PAGE:’/dvwa/login.php’ \
 -m FORM: ‘username=^USER^&password=^PASS^&login=login’ \
 -m ‘FAIL=login failed’ -t 6 | grep -i success
 
 Esse comando vai testar os usuários e senhas no formulário web, informando o caminho do formulário, o corpo da requisição e a resposta de falha que o servidor retorna para a ferramenta medusa.
+
 <img width="722" height="248" alt="image" src="https://github.com/user-attachments/assets/6efcb5ef-8ad7-437c-91e1-6deabe78eb09" />
 
 Agora com alguns logins e senhas que deram sucesso basta tentar logar no site com essas contas, após testar uma por uma a que realizou o login no site foi:
 Login: admin
 Senha: password
+
 <img width="738" height="546" alt="image" src="https://github.com/user-attachments/assets/1c279cb7-7215-4e90-9c4e-9a32d281fd4c" />
 
 
@@ -106,7 +118,7 @@ Como se proteger?
 5.	Implementação de MFA.
 
 
-=========================================================================================================================================================================================================
+====================================================================================================================================================================
 
 
 
